@@ -1,25 +1,26 @@
-import {  Layout, Menu, MenuProps } from 'antd';
+import { Layout, Menu, MenuProps } from 'antd';
 import { Outlet } from 'react-router-dom';
+import Foter from '../ui/Foter';
 
-const { Header, Content, Footer } = Layout;
-const items : MenuProps['items'] = [
+const { Header, Content } = Layout;
+const items: MenuProps['items'] = [
     {
-        key  : 1,
-        label : 'Home'
+        key: 1,
+        label: 'Home'
     },
     {
-        key  : 2,
-        label : 'Products'
+        key: 2,
+        label: 'Products'
     },
     {
-        key  : 3,
-        label : 'Contact us'
+        key: 3,
+        label: 'Contact us'
     },
     {
-        key  : 4,
-        label : 'About Us'
+        key: 4,
+        label: 'About Us'
     },
-   
+
 ]
 const MainLayout = () => {
     return (
@@ -35,19 +36,17 @@ const MainLayout = () => {
                 />
             </Header>
             <Content style={{ padding: '0 48px' }}>
-                
+
                 <div
                     style={{
                         minHeight: 280,
                         padding: 24,
                     }}
                 >
-                    <Outlet/>
+                    <Outlet />
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
-                Ant Design ©{new Date().getFullYear()} Created by Ant UED
-            </Footer>
+            <Foter/>
         </Layout>
     );
 };
