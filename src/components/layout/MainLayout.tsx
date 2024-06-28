@@ -23,7 +23,7 @@ const items : MenuProps['items'] = [
 ]
 const MainLayout = () => {
     return (
-        <Layout style={{height : "100vh"}}>
+        <Layout >
             <Header style={{ display: 'flex', alignItems: 'center' }}>
                 <div className="demo-logo" />
                 <Menu
