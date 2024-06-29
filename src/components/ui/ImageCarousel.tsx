@@ -13,6 +13,7 @@ const ImageCarousel = () => {
         <Carousel autoplay>
         {imageUrls.map((url, index) => (
           <div key={index}>
+            <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, nostrum.</h1>
             <img src={url} alt={`Slide ${index + 1}`} style={{ width: '100%', height: '50vh' }} />
           </div>
         ))}

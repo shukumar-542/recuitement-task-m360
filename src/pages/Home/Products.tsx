@@ -1,11 +1,13 @@
 // import { useAllProductQuery } from "../../redux/api/productApi";
-import { Pagination, Table, } from 'antd';
+import { Pagination,  Table, Tooltip, } from 'antd';
 import { useAllProductQuery } from '../../redux/api/productApi';
 import type { PaginationProps, TableProps } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa';
 import { FcViewDetails } from 'react-icons/fc';
 import { useEffect, useState } from 'react';
+import Loading from '../../components/ui/Loading';
+
 interface DataType {
   key: string,
   title: string,
@@ -22,7 +24,10 @@ const Products = () => {
     { name: "limit", value: 10 },
     { name: "skip", value: 0 },
   ]);
+
+  // Get all Product from api
   const { data: products, isLoading } = useAllProductQuery(params)
+
 
 
   useEffect(() => {
@@ -60,11 +65,17 @@ const Products = () => {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <div style={{ display: 'flex', gap: "5px" }}>
+        <div style={{ display: 'flex', gap: "8px" }}>
 
-          <NavLink to={`/details/${record?.key}`}  ><FcViewDetails size={25} /></NavLink>
-          <NavLink to={`/update/${record?.key}`} style={{cursor:'pointer'}}>
-            <FaEdit size={25} />
+          <NavLink to={`/details/${record?.key}`}  >
+            <Tooltip title="View details">
+              <FcViewDetails size={25} />
+            </Tooltip>
+          </NavLink>
+          <NavLink to={`/update/${record?.key}`} style={{ cursor: 'pointer', color: 'green' }}>
+            <Tooltip title="Edit">
+              <FaEdit size={20} />
+            </Tooltip>
           </NavLink>
         </div>
 
@@ -72,25 +83,23 @@ const Products = () => {
     },
   ];
 
-  // console.log(products);
 
   if (isLoading) {
-    return <h1>Loading.</h1>
+    return <Loading/>
   }
 
   const data = products?.products?.map((item: { id: unknown; }) => ({
     ...item,
-    key: item.id, // Ensure each item has a unique key
+    key: item.id,
   }));
 
-  // console.log(products.data);
 
   return (
     <div>
-      <h1>All Products</h1>
+      <h1 style={{color:'#666', margin : '10px 0'}}>All Products</h1>
       <Table columns={columns} pagination={false} dataSource={data} />
       <div
-        style={{ marginTop: "30px", display: "flex", justifyContent: "end" }}
+        style={{ marginTop: "20px", display: "flex", justifyContent: "end" }}
       >
         {" "}
         <Pagination

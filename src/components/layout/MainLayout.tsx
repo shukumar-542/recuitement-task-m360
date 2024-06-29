@@ -1,16 +1,16 @@
 import { Layout, Menu, MenuProps } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Foter from '../ui/Foter';
 
 const { Header, Content } = Layout;
 const items: MenuProps['items'] = [
     {
-        key: 1,
-        label: 'Home'
+        key: 'Home',
+        label: <NavLink to={'/'}>Home</NavLink>
     },
     {
-        key: 2,
-        label: 'Products'
+        key: 'Products',
+        label: <NavLink to={'/products'}>Products</NavLink>
     },
     {
         key: 3,
