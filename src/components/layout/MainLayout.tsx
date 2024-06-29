@@ -25,22 +25,21 @@ const items: MenuProps['items'] = [
 const MainLayout = () => {
     return (
         <Layout >
-            <Header style={{ display: 'flex', alignItems: 'center' }}>
+            <Header style={{ display: 'flex', alignItems: 'center' ,backgroundColor: '#445876' }}>
                 <div className="demo-logo" />
                 <Menu
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
                     items={items}
-                    style={{ flex: 1, minWidth: 0 }}
+                    style={{ flex: 1, minWidth: 0 , backgroundColor: '#445876'}}
                 />
             </Header>
-            <Content style={{ padding: '0 48px' }}>
+            <Content style={{ }}>
 
                 <div
                     style={{
-                        minHeight: 280,
-                        padding: 24,
+                        minHeight: 150,
                     }}
                 >
                     <Outlet />

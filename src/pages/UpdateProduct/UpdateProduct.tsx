@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useGetProductCategoriesQuery, useGetProductDetailsQuery } from "../../redux/api/productApi";
-import { Form, Input, Button, Select,DatePicker, Card, Spin,InputNumber  } from 'antd';
+import { Form, Input, Button, Select,DatePicker, Card,InputNumber  } from 'antd';
 import { useEffect,  } from "react";
 import moment from 'moment';
+import Loading from "../../components/ui/Loading";
 const { Option } = Select;
 
 
@@ -80,7 +81,7 @@ const UpdateProduct = () => {
     }
 
     if (isProductLoading || isCategoriesLoading) {
-        return <Spin tip="Loading..."></Spin>;
+        return <Loading/>;
     }
     //   console.log(productCategory);
 

@@ -1,10 +1,12 @@
-import ImageCarousel from "../../components/ui/ImageCarousel";
+// import ImageCarousel from "../../components/ui/ImageCarousel";
+import HeroSection from "./HeroSection/HeroSection";
 import Products from "./Products";
 
 const Home = () => {
     return (
         <div>
-            <ImageCarousel/>
+            {/* <ImageCarousel/> */}
+            <HeroSection/>
             <Products/>
         </div>
     );

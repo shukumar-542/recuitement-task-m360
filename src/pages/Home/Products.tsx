@@ -55,6 +55,12 @@ const Products = () => {
       responsive: ['sm', 'md', 'lg', 'xl'],
     },
     {
+      title: 'Brand',
+      dataIndex: 'brand',
+      key: 'brand',
+      responsive: ['sm', 'md', 'lg', 'xl'],
+    },
+    {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
@@ -95,7 +101,7 @@ const Products = () => {
 
 
   return (
-    <div>
+    <div style={{padding : '20px 48px'}}>
       <h1 style={{color:'#666', margin : '10px 0'}}>All Products</h1>
       <Table columns={columns} pagination={false} dataSource={data} />
       <div
