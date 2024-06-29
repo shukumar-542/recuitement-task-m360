@@ -6,7 +6,11 @@ const Review = ({productReview}: { productReview : IProductReview}) => {
 
     
     return (
-        <Col className="gutter-row" xs={24} sm={24} md={8} lg={8}>
+        <Col className="gutter-row"  xs={24} sm={24} md={8} lg={8} style={{
+           
+            padding: '16px',
+            
+        }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}>
                 <h3>{productReview?.reviewerName} </h3>
                 <span style={{ color: '#666' }}>{productReview?.date}</span>

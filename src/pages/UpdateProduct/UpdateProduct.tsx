@@ -81,12 +81,11 @@ const UpdateProduct = () => {
     }
 
     if (isProductLoading || isCategoriesLoading) {
-        return <Loading/>;
+        return <div style={{minHeight : '75vh'}}><Loading/></div>;
     }
-    //   console.log(productCategory);
 
     return (
-        <Card title="Update Product">
+        <Card title="Update Product" style={{ padding : '48px'}}>
             <Form form={form} layout="vertical" onFinish={onFinish}>
                 <Form.Item name="title" label="Title" rules={[{ required: true, message: 'Please enter the product title' }]}>
                     <Input />
@@ -169,8 +168,8 @@ const UpdateProduct = () => {
         </Form.List>
 
 
-                <Form.Item>
-                    <Button type="primary" htmlType="submit">
+                <Form.Item style={{ marginTop : '10px', textAlign:'center'}}>
+                    <Button  type="primary" htmlType="submit">
                         Submit
                     </Button>
                 </Form.Item>
