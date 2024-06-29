@@ -12,14 +12,7 @@ const items: MenuProps['items'] = [
         key: 'Products',
         label: <NavLink to={'/products'}>Products</NavLink>
     },
-    {
-        key: 3,
-        label: 'Contact us'
-    },
-    {
-        key: 4,
-        label: 'About Us'
-    },
+    
 
 ]
 const MainLayout = () => {

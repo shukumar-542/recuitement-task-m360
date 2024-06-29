@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useGetProductCategoriesQuery, useGetProductDetailsQuery } from "../../redux/api/productApi";
+import { useGetProductCategoriesQuery, useGetProductDetailsQuery, useUpdateProductsMutation } from "../../redux/api/productApi";
 import { Form, Input, Button, Select,DatePicker, Card,InputNumber  } from 'antd';
 import { useEffect,  } from "react";
 import moment from 'moment';
 import Loading from "../../components/ui/Loading";
 const { Option } = Select;
-
+import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 type ProductCategory = {
     slug: string;
@@ -42,16 +43,18 @@ const UpdateProduct = () => {
     const { id } = useParams()
 
     const [form] = Form.useForm();
-    // const [product, setProduct] = useState(null);
-    // const [categories, setCategories] = useState([]);
 
+    const navigate = useNavigate()
+
+    // Get Data 
     const { data: productDetails, isLoading: isProductLoading } = useGetProductDetailsQuery(id)
     const { data: productCategory, isLoading: isCategoriesLoading } = useGetProductCategoriesQuery('')
 
+    // update product
+    const [ updateProduct] = useUpdateProductsMutation()
 
     useEffect(() => {
         if (productDetails) {
-            // Set form fields with product details, including reviews
             form.setFieldsValue({
                 ...productDetails,
                 reviews: productDetails.reviews.map((review : Review) => ({
@@ -77,7 +80,19 @@ const UpdateProduct = () => {
                 date: review.date.toISOString()
               }))
         }
-        console.log(updatedProducts);
+
+        try {
+          await updateProduct({ id, updatedProducts });
+          message.success('Product updated successfully!');
+          navigate('/');
+      } catch (error) {
+          message.error('Failed to update product. Please try again.');
+          console.error(error);
+      }
+
+
+
+
     }
 
     if (isProductLoading || isCategoriesLoading) {

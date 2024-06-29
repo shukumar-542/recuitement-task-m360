@@ -5,7 +5,6 @@ import Products from "./Products";
 const Home = () => {
     return (
         <div>
-            {/* <ImageCarousel/> */}
             <HeroSection/>
             <Products/>
         </div>
